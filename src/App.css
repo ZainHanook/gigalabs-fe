@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -11,6 +12,11 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.site-card-border-less-wrapper {
+  padding: 30px;
+  background: #ececec;
 }
 
 .App-header {
@@ -32,7 +38,13 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* POST IT CSS */
+.ant-avatar img{
+  width: 100%;
 }
