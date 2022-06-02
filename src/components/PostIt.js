@@ -12,9 +12,12 @@ export const PostIt = () => {
     //     setLoading(!checked);
     // };
     return (
+        
         <Card
             style={{
                 width: 300,
+                backgroundColor: "white",
+                boxShadow: "0px 0px 15px rgb(0 0 0 / 10%)"
             }}
             // cover={
             //     <img

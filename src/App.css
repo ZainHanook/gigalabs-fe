@@ -1,6 +1,8 @@
 .App {
   display: flex;
   justify-content: center;
+  /* background-color: #282c34; */
+
 }
 
 .App-logo {
@@ -20,7 +22,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -45,6 +46,6 @@
 }
 
 /* POST IT CSS */
-.ant-avatar img{
-  width: 100%;
+.ant-avatar img {
+  width: 20%;
 }
