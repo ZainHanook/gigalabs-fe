@@ -1,12 +1,13 @@
-import './App.css';
+import React from 'react';
 import { PostIt } from './components/PostIt';
+import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <div>
       <PostIt />
     </div>
-  );
-}
+  )
+};
 
 export default App;

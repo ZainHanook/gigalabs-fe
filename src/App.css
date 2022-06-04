@@ -1,51 +1,26 @@
-.App {
+#components-layout-demo-fixed .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.FormItemBtn {
   display: flex;
-  justify-content: center;
-  /* background-color: #282c34; */
-
+  justify-content: end;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.FormItemBtn .formBtn {
+ float: right;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media only screen and (max-width: 600px) {
+  .site-layout-content {
+    width: 100%;
   }
-}
-
-.site-card-border-less-wrapper {
-  padding: 30px;
-  background: #ececec;
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* POST IT CSS */
-.ant-avatar img {
-  width: 20%;
 }
