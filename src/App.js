@@ -1,13 +1,18 @@
-import React from 'react';
-import { PostIt } from './components/PostIt';
-import './App.css';
+import React from "react";
+import { PostIt } from "./components/PostIt";
+import Login from "./components/Login";
+import { Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import "./App.css";
 
 const App = () => {
   return (
-    <div>
-      <PostIt />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/post" element={<PostIt />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
 };
 
 export default App;
