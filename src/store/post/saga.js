@@ -22,13 +22,13 @@ import {
 } from "./action";
 import { getPostDetails } from "../../module/backend_helper";
 import axios from "axios";
-const token = JSON.parse(localStorage.getItem("token")).access;
+const token = JSON.parse(localStorage.getItem("token"))?.access;
 console.log(token);
 
 async function getPosts() {
   return await axios.get("http://localhost:5000/post", {
     headers: {
-      Authorization: `Bearer ${token.token}`,
+      Authorization: `Bearer ${token?.token}`,
     },
   });
 }

@@ -11,6 +11,8 @@ import {
   Divider,
   Row,
   Col,
+  Upload,
+  message
 } from "antd";
 import "antd/dist/antd.css";
 import { FileImageOutlined } from "@ant-design/icons";
@@ -83,8 +85,8 @@ export const PostIt = () => {
                 >
                   <Meta
                     avatar={<Avatar src={images.avatar1} />}
-                    // title="Card title"
-                    // description="This is the description"
+                  // title="Card title"
+                  // description="This is the description"
                   />
                   <span>
                     <Form
@@ -124,26 +126,23 @@ export const PostIt = () => {
 
                       <Divider></Divider>
                       <Form.Item
-                        className="FormItemBtn"
-                        // wrapperCol={{
-                        //     offset: 8,
-                        //     span: 16,
-                        // }}
-                      >
-                        <Button
-                          className="imgBtn"
-                          type="light"
-                          htmlType=""
-                          style={{
-                            backgroundColor: "black",
-                            color: "wheat",
-                            borderRadius: "20px",
-                            float: "left",
-                          }}
-                        >
-                          <FileImageOutlined />
-                          Photo/Video
-                        </Button>
+                        className="FormItemBtn">
+                        <Upload>
+                          <Button
+                            className="imgBtn"
+                            type="light"
+                            htmlType=""
+                            style={{
+                              backgroundColor: "black",
+                              color: "wheat",
+                              borderRadius: "20px",
+                              float: "left",
+                            }}
+                          >
+                            <FileImageOutlined />
+                            Photo/Video
+                          </Button>
+                        </Upload>
                         <Button
                           className="formBtn"
                           type="primary"

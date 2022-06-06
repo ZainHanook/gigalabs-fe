@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { CommentSection } from "./CommentSection";
 import { images } from "./images";
 import {
   Layout,
@@ -11,12 +12,15 @@ import {
   Divider,
   Row,
   Col,
+  Collapse
 } from "antd";
 import { LikeOutlined, CommentOutlined } from "@ant-design/icons";
+const { Panel } = Collapse;
 const { Header, Content } = Layout;
 const { Meta } = Card;
 const { TextArea } = Input;
 export const CommentCard = ({ posts }) => {
+  const [showComment, setShowComment] = useState(false);
   return (
     <div>
       {posts.map((d) => (
@@ -45,26 +49,32 @@ export const CommentCard = ({ posts }) => {
                       borderRadius: "10px",
                     }}
                   >
-                    <Meta
-                      avatar={<Avatar src={images.avatar1} />}
-                      // title="Card title"
-                      // description="This is the description"
-                    />
-                    <span>{d.user.firstName + " " + d.user.lastName}</span>
+                    <span style={{ display: "flex" }}>
+                      <Avatar src={images.avatar1} />
+                      <h2 style={{ fontSize: "20px", marginLeft: "3%" }}>{d.user.firstName + " " + d.user.lastName}</h2>
+                    </span>
                     <span>
                       <p>{d.body}</p>
                       <Divider></Divider>
                       <div
                         style={{
-                          diplay: "flex",
-                          justifyContent: "space-between",
+                          display: "flex",
+                          justifyContent: "space-evenly",
                           backgroundColor: "grey",
                         }}
                       >
-                        <LikeOutlined /> Like
-                        <CommentOutlined /> Comment
+                        <button style={{ border: "none", cursor: "pointer" }}>
+                          <LikeOutlined /> Like
+                        </button>
+                        <button onClick={() => { setShowComment(!showComment) }} style={{ border: "none", cursor: "pointer" }}>
+                          <CommentOutlined /> Comment
+                        </button>
                       </div>
                     </span>
+                    <div>
+                      {showComment ? <CommentSection /> : ''}
+
+                    </div>
                   </Card>
                 </div>
               </Content>
