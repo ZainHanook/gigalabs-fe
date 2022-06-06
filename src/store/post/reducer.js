@@ -8,6 +8,9 @@ import {
   CREATE_POST_REQUEST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILED,
+  CREATE_COMMENT_FAILED,
+  CREATE_COMMENT_REQUEST,
+  CREATE_COMMENT_SUCCESS,
 } from "./postTypes";
 const initialState = {
   posts: [],
@@ -22,6 +25,7 @@ const PostReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_POSTS:
     case CREATE_POST_REQUEST:
+    case CREATE_COMMENT_REQUEST:
       state = { ...state, loadingPosts: true };
       break;
     case GET_POSTS_SUCCESS:
@@ -38,12 +42,20 @@ const PostReducer = (state = initialState, action) => {
         loadingPosts: false,
       };
       break;
+
+    case CREATE_COMMENT_SUCCESS:
+      state = {
+        ...state,
+        post: action.payload,
+        loadingPosts: false,
+      };
     case GET_POST_DETAILS_SUCCESS:
       state = { ...state, post: action.payload[0], loadingPostDetails: false };
       break;
     case CREATE_POST_SUCCESS:
       state = { ...state, loading: false };
     case GET_POST_DETAILS_FAIL:
+    case CREATE_COMMENT_FAILED:
       state = {
         ...state,
         error: {

@@ -9,6 +9,9 @@ import {
   CREATE_POST_REQUEST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILED,
+  CREATE_COMMENT_FAILED,
+  CREATE_COMMENT_SUCCESS,
+  CREATE_COMMENT_REQUEST,
 } from "./postTypes";
 
 import {
@@ -19,6 +22,9 @@ import {
   createPostsFail,
   createPostRequest,
   creatPostSuccess,
+  createCommentRequest,
+  createCommentSuccess,
+  createCommentFailed,
 } from "./action";
 import { getPostDetails } from "../../module/backend_helper";
 import axios from "axios";
@@ -39,6 +45,18 @@ async function createPost(payload) {
       Authorization: `Bearer ${token.token}`,
     },
   });
+}
+
+async function createComment(payload) {
+  return await axios.post(
+    `http://localhost:5000/post/comment/${payload.postId}`,
+    payload,
+    {
+      headers: {
+        Authorization: `Bearer ${token.token}`,
+      },
+    }
+  );
 }
 function* onCreatePost({ payload }) {
   try {
@@ -69,10 +87,19 @@ function* onGetPostDetails({ payload: id }) {
   }
 }
 
+function* onCreateComment({ payload }) {
+  try {
+    const response = yield call(createComment, payload);
+    yield put(createCommentSuccess(response));
+  } catch (error) {
+    yield put(createCommentFailed(error));
+  }
+}
 function* PostSaga() {
   yield takeLatest(GET_POSTS, onGetPosts);
   yield takeLatest(GET_POST_DETAILS, onGetPostDetails);
   yield takeLatest(CREATE_POST_REQUEST, onCreatePost);
+  yield takeLatest(CREATE_COMMENT_REQUEST, onCreateComment);
 }
 
 export default PostSaga;

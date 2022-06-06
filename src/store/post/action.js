@@ -8,6 +8,9 @@ import {
   CREATE_POST_REQUEST,
   CREATE_POST_SUCCESS,
   CREATE_POST_FAILED,
+  CREATE_COMMENT_FAILED,
+  CREATE_COMMENT_REQUEST,
+  CREATE_COMMENT_SUCCESS,
 } from "./postTypes";
 
 export const createPostRequest = (data) => {
@@ -65,6 +68,26 @@ export const getPostDetailsSuccess = (post) => {
 export const getPostDetailsFail = (error) => {
   return {
     type: GET_POST_DETAILS_FAIL,
+    payload: error,
+  };
+};
+
+export const createCommentRequest = (data) => {
+  return {
+    type: CREATE_COMMENT_REQUEST,
+    payload: data,
+  };
+};
+
+export const createCommentSuccess = (data) => {
+  return {
+    type: CREATE_COMMENT_SUCCESS,
+    payload: data,
+  };
+};
+export const createCommentFailed = (error) => {
+  return {
+    type: CREATE_COMMENT_FAILED,
     payload: error,
   };
 };

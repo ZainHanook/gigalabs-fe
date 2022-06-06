@@ -12,7 +12,7 @@ import {
   Divider,
   Row,
   Col,
-  Collapse
+  Collapse,
 } from "antd";
 import { LikeOutlined, CommentOutlined } from "@ant-design/icons";
 const { Panel } = Collapse;
@@ -51,7 +51,9 @@ export const CommentCard = ({ posts }) => {
                   >
                     <span style={{ display: "flex" }}>
                       <Avatar src={images.avatar1} />
-                      <h2 style={{ fontSize: "20px", marginLeft: "3%" }}>{d.user.firstName + " " + d.user.lastName}</h2>
+                      <h2 style={{ fontSize: "20px", marginLeft: "3%" }}>
+                        {d.user.firstName + " " + d.user.lastName}
+                      </h2>
                     </span>
                     <span>
                       <p>{d.body}</p>
@@ -66,14 +68,23 @@ export const CommentCard = ({ posts }) => {
                         <button style={{ border: "none", cursor: "pointer" }}>
                           <LikeOutlined /> Like
                         </button>
-                        <button onClick={() => { setShowComment(!showComment) }} style={{ border: "none", cursor: "pointer" }}>
+                        <button
+                          onClick={() => {
+                            setShowComment(!showComment);
+                          }}
+                          style={{ border: "none", cursor: "pointer" }}
+                        >
                           <CommentOutlined /> Comment
                         </button>
                       </div>
                     </span>
                     <div>
-                      {showComment ? <CommentSection /> : ''}
-
+                      {showComment ? <CommentSection postId={d._id} /> : ""}
+                    </div>
+                    <div>
+                      {d.comments?.map((comment) => {
+                        return <Col>{comment.text}</Col>;
+                      })}
                     </div>
                   </Card>
                 </div>
