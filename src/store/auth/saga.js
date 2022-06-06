@@ -7,7 +7,7 @@ import axios from "axios";
 
 async function login(data) {
   const { email, password } = data.payload;
-  return await axios.post("http://localhost:5000/auth/login", {
+  return await axios.post("http://161.35.189.82:5001/auth/login", {
     email,
     password,
   });

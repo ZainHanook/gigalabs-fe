@@ -32,7 +32,7 @@ const token = JSON.parse(localStorage.getItem("token"))?.access;
 console.log(token);
 
 async function getPosts() {
-  return await axios.get("http://localhost:5000/post", {
+  return await axios.get("http://161.35.189.82:5001/post", {
     headers: {
       Authorization: `Bearer ${token?.token}`,
     },
@@ -40,7 +40,7 @@ async function getPosts() {
 }
 
 async function createPost(payload) {
-  return await axios.post("http://localhost:5000/post", payload, {
+  return await axios.post("http://161.35.189.82:5001/post", payload, {
     headers: {
       Authorization: `Bearer ${token.token}`,
     },
@@ -49,7 +49,7 @@ async function createPost(payload) {
 
 async function createComment(payload) {
   return await axios.post(
-    `http://localhost:5000/post/comment/${payload.postId}`,
+    `http://161.35.189.82:5001/post/comment/${payload.postId}`,
     payload,
     {
       headers: {
